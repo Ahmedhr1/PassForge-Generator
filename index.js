@@ -8,7 +8,7 @@ const specialChars = ['!', '@', '#', '$', '%', '^', '&', '*', '(', ')', '-', '_'
 
 const Allchars = upperCase + lowerCase + number + specialChars.join("");
 
-function generatepass(){
+function generatePass(){
 
 let password = "";
 
@@ -24,6 +24,14 @@ while(length > password.length){
     password += Allchars[Math.floor(Math.random() *Allchars.length)];
 }
 passwordField.value = password;
+}
 
-
+function copyPass() {
+  navigator.clipboard.writeText(passwordField.value)
+    .then(() => {
+      console.log("Password copied to clipboard");
+    })
+    .catch(err => {
+      console.error("Failed to copy:", err);
+    });
 }
