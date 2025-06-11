@@ -29,7 +29,11 @@ passwordField.value = password;
 function copyPass() {
   navigator.clipboard.writeText(passwordField.value)
     .then(() => {
-      console.log("Password copied to clipboard");
+      const popup = document.getElementById("copy-popup");
+      popup.classList.add("show");
+      setTimeout(() => {
+        popup.classList.remove("show");
+      }, 2000);
     })
     .catch(err => {
       console.error("Failed to copy:", err);
