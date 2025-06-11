@@ -1,4 +1,4 @@
-const passwordBox = document.getElementbyId("password")
+const passwordField = document.getElementById("password")
 const length = 12;
 
 const upperCase = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
@@ -6,9 +6,9 @@ const lowerCase = "abcdefghijklmnopqrstuvwxyz";
 const number = "0123456789";
 const specialChars = ['!', '@', '#', '$', '%', '^', '&', '*', '(', ')', '-', '_', '=', '+', '[', ']', '{', '}', ';', ':', ',', '.', '<', '>', '?', '/', '\\', '|', '~'];
 
-function generatepass(){
+const Allchars = upperCase + lowerCase + number + specialChars.join("");
 
-  
+function generatepass(){
 
 let password = "";
 
@@ -16,10 +16,14 @@ password += upperCase[Math.floor(Math.random() * upperCase.length)]
 
 password += lowerCase[Math.floor(Math.random() * lowerCase.length)]
 
-password += numbe[Math.floor(Math.random() * number.length)]
+password += number[Math.floor(Math.random() * number.length)]
 
-password += Symbol[Math.floor(Math.random() * Symbol.length)]
+password += specialChars[Math.floor(Math.random() * specialChars.length)]
 
-  
+while(length > password.length){
+    password += Allchars[Math.floor(Math.random() *Allchars.length)];
+}
+passwordField.value = password;
+
 
 }
